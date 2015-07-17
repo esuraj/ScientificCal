@@ -1,2 +1,3 @@
 # ScientificCal
-skdfknflsfkdfsl
+
+This is a scientific calculator
