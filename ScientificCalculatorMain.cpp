@@ -12,6 +12,7 @@
 #include <sstream>
 #include <iostream>
 #include <stdio.h>
+#include <cstdlib>
 
 //(*InternalHeaders(ScientificCalculatorFrame)
 #include <wx/intl.h>
@@ -75,6 +76,7 @@ const long ScientificCalculatorFrame::ID_BUTTON25 = wxNewId();
 const long ScientificCalculatorFrame::ID_BUTTON26 = wxNewId();
 const long ScientificCalculatorFrame::ID_BUTTON27 = wxNewId();
 const long ScientificCalculatorFrame::ID_BUTTON28 = wxNewId();
+const long ScientificCalculatorFrame::ID_BUTTON29 = wxNewId();
 const long ScientificCalculatorFrame::idMenuQuit = wxNewId();
 const long ScientificCalculatorFrame::idMenuAbout = wxNewId();
 const long ScientificCalculatorFrame::ID_STATUSBAR1 = wxNewId();
@@ -98,8 +100,8 @@ ScientificCalculatorFrame::ScientificCalculatorFrame(wxWindow* parent,wxWindowID
     SetClientSize(wxSize(366,331));
     TextCtrl1 = new wxTextCtrl(this, ID_TEXTCTRL1, _("0"), wxPoint(16,8), wxSize(328,24), 0, wxDefaultValidator, _T("ID_TEXTCTRL1"));
     Button1 = new wxButton(this, ID_BUTTON1, _("save"), wxPoint(16,40), wxSize(75,24), 0, wxDefaultValidator, _T("ID_BUTTON1"));
-    Button2 = new wxButton(this, ID_BUTTON2, _("C"), wxPoint(184,40), wxSize(75,24), 0, wxDefaultValidator, _T("ID_BUTTON2"));
-    Button3 = new wxButton(this, ID_BUTTON3, _("Close"), wxPoint(264,40), wxSize(75,24), 0, wxDefaultValidator, _T("ID_BUTTON3"));
+    Button2 = new wxButton(this, ID_BUTTON2, _("CE"), wxPoint(264,40), wxSize(75,24), 0, wxDefaultValidator, _T("ID_BUTTON2"));
+    Button3 = new wxButton(this, ID_BUTTON3, _("Close"), wxPoint(16,312), wxSize(75,24), 0, wxDefaultValidator, _T("ID_BUTTON3"));
     Button4 = new wxButton(this, ID_BUTTON4, _("load"), wxPoint(104,40), wxSize(75,24), 0, wxDefaultValidator, _T("ID_BUTTON4"));
     Button5 = new wxButton(this, ID_BUTTON5, _("√"), wxPoint(16,72), wxSize(75,31), 0, wxDefaultValidator, _T("ID_BUTTON5"));
     Button6 = new wxButton(this, ID_BUTTON6, _("sin"), wxPoint(16,112), wxSize(75,32), 0, wxDefaultValidator, _T("ID_BUTTON6"));
@@ -125,6 +127,7 @@ ScientificCalculatorFrame::ScientificCalculatorFrame(wxWindow* parent,wxWindowID
     Button26 = new wxButton(this, ID_BUTTON26, _("-"), wxPoint(264,232), wxSize(75,31), 0, wxDefaultValidator, _T("ID_BUTTON26"));
     Button27 = new wxButton(this, ID_BUTTON27, _("/"), wxPoint(264,152), wxSize(75,31), 0, wxDefaultValidator, _T("ID_BUTTON27"));
     Button28 = new wxButton(this, ID_BUTTON28, _("+"), wxPoint(264,272), wxSize(75,32), 0, wxDefaultValidator, _T("ID_BUTTON28"));
+    Button29 = new wxButton(this, ID_BUTTON29, _("C"), wxPoint(184,40), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON29"));
     MenuBar1 = new wxMenuBar();
     Menu1 = new wxMenu();
     MenuItem1 = new wxMenuItem(Menu1, idMenuQuit, _("Quit\tAlt-F4"), _("Quit the application"), wxITEM_NORMAL);
@@ -143,12 +146,27 @@ ScientificCalculatorFrame::ScientificCalculatorFrame(wxWindow* parent,wxWindowID
     SetStatusBar(StatusBar1);
 
     Connect(ID_BUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnButton1Click);
+    Connect(ID_BUTTON2,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnButton2Click);
+    Connect(ID_BUTTON3,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnButton3Click);
+    Connect(ID_BUTTON4,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnButton4Click);
+    Connect(ID_BUTTON5,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnButton5Click);
+    Connect(ID_BUTTON7,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnButton7Click);
+    Connect(ID_BUTTON8,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnButton8Click);
+    Connect(ID_BUTTON9,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnButton9Click);
     Connect(ID_BUTTON10,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnButton10Click);
     Connect(ID_BUTTON13,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnButton13Click);
+    Connect(ID_BUTTON14,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnButton14Click);
+    Connect(ID_BUTTON15,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnButton15Click);
+    Connect(ID_BUTTON17,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnButton17Click);
     Connect(ID_BUTTON19,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnButton19Click);
+    Connect(ID_BUTTON20,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnButton20Click);
+    Connect(ID_BUTTON21,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnButton21Click);
     Connect(ID_BUTTON24,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnButton24Click);
+    Connect(ID_BUTTON25,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnButton25Click);
     Connect(ID_BUTTON26,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnButton26Click);
+    Connect(ID_BUTTON27,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnButton27Click);
     Connect(ID_BUTTON28,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnButton28Click);
+    Connect(ID_BUTTON29,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnButton29Click);
     Connect(idMenuQuit,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnQuit);
     Connect(idMenuAbout,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnAbout);
     Connect(wxID_ANY,wxEVT_CLOSE_WINDOW,(wxObjectEventFunction)&ScientificCalculatorFrame::OnClose);
@@ -163,7 +181,14 @@ ScientificCalculatorFrame::~ScientificCalculatorFrame()
 }
 
 double currentValue;
+double memoryValue;
 int prevOperator = 0;
+boolean cleanTextFlag = false;
+
+void ScientificCalculatorFrame::clearCache() {
+    currentValue = 0;
+    prevOperator = 0;
+}
 
 void ScientificCalculatorFrame::append(std::string newValue) {
     std::string stringValue = std::string(TextCtrl1->GetValue());
@@ -182,8 +207,9 @@ void ScientificCalculatorFrame::append(std::string newValue) {
         return;
     }
 
-    if(replaceFlag) {
+    if(replaceFlag || cleanTextFlag) {
         stringValue = "";
+        cleanTextFlag = false;
     }
 
     stringValue = stringValue + newValue;
@@ -209,17 +235,26 @@ void ScientificCalculatorFrame::calculate(int newOperator, double newValue) {
             calculatedValue = currentValue - newValue;
             prevOperator = newOperator;
         }
+        if (prevOperator == 3) {
+            calculatedValue = currentValue / newValue;
+            prevOperator = newOperator;
+        }
+        if (prevOperator == 4) {
+            calculatedValue = currentValue * newValue;
+            prevOperator = newOperator;
+        }
         currentValue = calculatedValue;
         std::ostringstream strs;
         strs << calculatedValue;
         std::string stringValue = strs.str();
         wxString wxStringValue(stringValue);
         TextCtrl1->SetValue(wxStringValue);
+        cleanTextFlag = true;
     }
 }
 void ScientificCalculatorFrame::OnQuit(wxCommandEvent& event)
 {
-    Close();
+    exit(0);
 }
 
 void ScientificCalculatorFrame::OnAbout(wxCommandEvent& event)
@@ -235,7 +270,8 @@ void ScientificCalculatorFrame::OnClose(wxCloseEvent& event)
 
 void ScientificCalculatorFrame::OnButton1Click(wxCommandEvent& event)
 {
-
+    std::string stringValue = std::string(TextCtrl1->GetValue());
+    memoryValue = atof(stringValue.c_str());
 }
 
 void ScientificCalculatorFrame::OnButton24Click(wxCommandEvent& event)
@@ -268,4 +304,88 @@ void ScientificCalculatorFrame::OnButton10Click(wxCommandEvent& event)
 
 void ScientificCalculatorFrame::OnButton19Click(wxCommandEvent& event)
 {
+    append("3");
+}
+
+void ScientificCalculatorFrame::OnButton9Click(wxCommandEvent& event)
+{
+    append("4");
+}
+
+void ScientificCalculatorFrame::OnButton14Click(wxCommandEvent& event)
+{
+    append("5");
+}
+
+void ScientificCalculatorFrame::OnButton20Click(wxCommandEvent& event)
+{
+    append("6");
+}
+
+void ScientificCalculatorFrame::OnButton8Click(wxCommandEvent& event)
+{
+    append("7");
+}
+
+void ScientificCalculatorFrame::OnButton15Click(wxCommandEvent& event)
+{
+    append("8");
+}
+
+void ScientificCalculatorFrame::OnButton21Click(wxCommandEvent& event)
+{
+    append("9");
+}
+
+void ScientificCalculatorFrame::OnButton27Click(wxCommandEvent& event)
+{
+    std::string stringValue = std::string(TextCtrl1->GetValue());
+    double doubleValue = atof(stringValue.c_str());
+    calculate(3, doubleValue);
+}
+
+void ScientificCalculatorFrame::OnButton25Click(wxCommandEvent& event)
+{
+    std::string stringValue = std::string(TextCtrl1->GetValue());
+    double doubleValue = atof(stringValue.c_str());
+    calculate(4, doubleValue);
+}
+
+void ScientificCalculatorFrame::OnButton5Click(wxCommandEvent& event)
+{
+}
+
+void ScientificCalculatorFrame::OnButton7Click(wxCommandEvent& event)
+{
+}
+
+void ScientificCalculatorFrame::OnButton17Click(wxCommandEvent& event)
+{
+}
+
+void ScientificCalculatorFrame::OnButton2Click(wxCommandEvent& event)
+{
+    wxString wxStringValue("0");
+    TextCtrl1->SetValue(wxStringValue);
+    clearCache();
+}
+
+void ScientificCalculatorFrame::OnButton4Click(wxCommandEvent& event)
+{
+    std::ostringstream strs;
+    strs << memoryValue;
+    std::string stringValue = strs.str();
+    wxString wxStringValue(stringValue);
+    TextCtrl1->SetValue(wxStringValue);
+}
+
+void ScientificCalculatorFrame::OnButton29Click(wxCommandEvent& event)
+{
+    wxString wxStringValue("0");
+    TextCtrl1->SetValue(wxStringValue);
+}
+
+void ScientificCalculatorFrame::OnButton3Click(wxCommandEvent& event)
+{
+    exit(0);
 }
