@@ -38,10 +38,35 @@ class ScientificCalculatorFrame: public wxFrame
         void OnButton26Click(wxCommandEvent& event);
         void OnButton10Click(wxCommandEvent& event);
         void OnButton19Click(wxCommandEvent& event);
+        void OnButton9Click(wxCommandEvent& event);
+        void OnButton14Click(wxCommandEvent& event);
+        void OnButton20Click(wxCommandEvent& event);
+        void OnButton8Click(wxCommandEvent& event);
+        void OnButton15Click(wxCommandEvent& event);
+        void OnButton21Click(wxCommandEvent& event);
+        void OnButton27Click(wxCommandEvent& event);
+        void OnButton25Click(wxCommandEvent& event);
+        void OnButton5Click(wxCommandEvent& event);
+        void OnButton7Click(wxCommandEvent& event);
+        void OnButton17Click(wxCommandEvent& event);
+        void OnButton2Click(wxCommandEvent& event);
+        void OnButton4Click(wxCommandEvent& event);
+        void OnButton29Click(wxCommandEvent& event);
+        void OnButton3Click(wxCommandEvent& event);
+        void OnButton16Click(wxCommandEvent& event);
+        void OnButton6Click(wxCommandEvent& event);
+        void OnButton12Click(wxCommandEvent& event);
+        void OnButton18Click(wxCommandEvent& event);
+        void OnButton22Click(wxCommandEvent& event);
+        void OnButton11Click(wxCommandEvent& event);
+        void OnButton30Click(wxCommandEvent& event);
+        void OnButton31Click(wxCommandEvent& event);
         //*)
 
         void calculate(int newOperator, double newValue);
         void append(std::string newValue);
+        void clearCache();
+        int Factorial(int x);
 
         //(*Identifiers(ScientificCalculatorFrame)
         static const long ID_TEXTCTRL1;
@@ -73,6 +98,9 @@ class ScientificCalculatorFrame: public wxFrame
         static const long ID_BUTTON26;
         static const long ID_BUTTON27;
         static const long ID_BUTTON28;
+        static const long ID_BUTTON29;
+        static const long ID_BUTTON30;
+        static const long ID_BUTTON31;
         static const long idMenuQuit;
         static const long idMenuAbout;
         static const long ID_STATUSBAR1;
@@ -87,6 +115,7 @@ class ScientificCalculatorFrame: public wxFrame
         wxButton* Button22;
         wxButton* Button2;
         wxButton* Button23;
+        wxButton* Button30;
         wxButton* Button6;
         wxButton* Button10;
         wxButton* Button11;
@@ -98,11 +127,13 @@ class ScientificCalculatorFrame: public wxFrame
         wxStatusBar* StatusBar1;
         wxButton* Button19;
         wxButton* Button9;
+        wxButton* Button31;
         wxButton* Button21;
         wxTextCtrl* TextCtrl1;
         wxButton* Button17;
         wxButton* Button18;
         wxButton* Button15;
+        wxButton* Button29;
         wxButton* Button13;
         wxButton* Button16;
         wxButton* Button27;
