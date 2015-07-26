@@ -53,11 +53,18 @@ class ScientificCalculatorFrame: public wxFrame
         void OnButton4Click(wxCommandEvent& event);
         void OnButton29Click(wxCommandEvent& event);
         void OnButton3Click(wxCommandEvent& event);
+        void OnButton16Click(wxCommandEvent& event);
+        void OnButton6Click(wxCommandEvent& event);
+        void OnButton12Click(wxCommandEvent& event);
+        void OnButton18Click(wxCommandEvent& event);
+        void OnButton22Click(wxCommandEvent& event);
+        void OnButton11Click(wxCommandEvent& event);
         //*)
 
         void calculate(int newOperator, double newValue);
         void append(std::string newValue);
         void clearCache();
+        int Factorial(int x);
 
         //(*Identifiers(ScientificCalculatorFrame)
         static const long ID_TEXTCTRL1;

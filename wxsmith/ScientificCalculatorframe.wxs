@@ -43,6 +43,7 @@
 			<label>sin</label>
 			<pos>16,112</pos>
 			<size>75,32</size>
+			<handler function="OnButton6Click" entry="EVT_BUTTON" />
 		</object>
 		<object class="wxButton" name="ID_BUTTON7" variable="Button7" member="yes">
 			<label>.</label>
@@ -72,11 +73,13 @@
 			<label>^</label>
 			<pos>104,72</pos>
 			<size>75,31</size>
+			<handler function="OnButton11Click" entry="EVT_BUTTON" />
 		</object>
 		<object class="wxButton" name="ID_BUTTON12" variable="Button12" member="yes">
 			<label>cos</label>
 			<pos>104,112</pos>
 			<size>75,31</size>
+			<handler function="OnButton12Click" entry="EVT_BUTTON" />
 		</object>
 		<object class="wxButton" name="ID_BUTTON13" variable="Button13" member="yes">
 			<label>2</label>
@@ -100,6 +103,7 @@
 			<label>log</label>
 			<pos>184,72</pos>
 			<size>75,31</size>
+			<handler function="OnButton16Click" entry="EVT_BUTTON" />
 		</object>
 		<object class="wxButton" name="ID_BUTTON17" variable="Button17" member="yes">
 			<label>0</label>
@@ -111,6 +115,7 @@
 			<label>tan</label>
 			<pos>184,112</pos>
 			<size>75,31</size>
+			<handler function="OnButton18Click" entry="EVT_BUTTON" />
 		</object>
 		<object class="wxButton" name="ID_BUTTON19" variable="Button19" member="yes">
 			<label>3</label>
@@ -134,6 +139,7 @@
 			<label>=</label>
 			<pos>184,272</pos>
 			<size>75,32</size>
+			<handler function="OnButton22Click" entry="EVT_BUTTON" />
 		</object>
 		<object class="wxButton" name="ID_BUTTON23" variable="Button23" member="yes">
 			<label>Label</label>
