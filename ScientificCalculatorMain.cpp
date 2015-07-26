@@ -7,6 +7,8 @@
  * License:
  **************************************************************/
 
+#define _USE_MATH_DEFINES
+
 #include "ScientificCalculatorMain.h"
 #include <wx/msgdlg.h>
 #include <sstream>
@@ -78,6 +80,8 @@ const long ScientificCalculatorFrame::ID_BUTTON26 = wxNewId();
 const long ScientificCalculatorFrame::ID_BUTTON27 = wxNewId();
 const long ScientificCalculatorFrame::ID_BUTTON28 = wxNewId();
 const long ScientificCalculatorFrame::ID_BUTTON29 = wxNewId();
+const long ScientificCalculatorFrame::ID_BUTTON30 = wxNewId();
+const long ScientificCalculatorFrame::ID_BUTTON31 = wxNewId();
 const long ScientificCalculatorFrame::idMenuQuit = wxNewId();
 const long ScientificCalculatorFrame::idMenuAbout = wxNewId();
 const long ScientificCalculatorFrame::ID_STATUSBAR1 = wxNewId();
@@ -98,13 +102,13 @@ ScientificCalculatorFrame::ScientificCalculatorFrame(wxWindow* parent,wxWindowID
     wxMenu* Menu2;
 
     Create(parent, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE, _T("wxID_ANY"));
-    SetClientSize(wxSize(366,331));
+    SetClientSize(wxSize(366,377));
     TextCtrl1 = new wxTextCtrl(this, ID_TEXTCTRL1, _("0"), wxPoint(16,8), wxSize(328,24), 0, wxDefaultValidator, _T("ID_TEXTCTRL1"));
     Button1 = new wxButton(this, ID_BUTTON1, _("save"), wxPoint(16,40), wxSize(75,24), 0, wxDefaultValidator, _T("ID_BUTTON1"));
     Button2 = new wxButton(this, ID_BUTTON2, _("CE"), wxPoint(264,40), wxSize(75,24), 0, wxDefaultValidator, _T("ID_BUTTON2"));
     Button3 = new wxButton(this, ID_BUTTON3, _("Close"), wxPoint(16,312), wxSize(75,24), 0, wxDefaultValidator, _T("ID_BUTTON3"));
     Button4 = new wxButton(this, ID_BUTTON4, _("load"), wxPoint(104,40), wxSize(75,24), 0, wxDefaultValidator, _T("ID_BUTTON4"));
-    Button5 = new wxButton(this, ID_BUTTON5, _("√"), wxPoint(16,72), wxSize(75,31), 0, wxDefaultValidator, _T("ID_BUTTON5"));
+    Button5 = new wxButton(this, ID_BUTTON5, _("SQRT"), wxPoint(16,72), wxSize(75,31), 0, wxDefaultValidator, _T("ID_BUTTON5"));
     Button6 = new wxButton(this, ID_BUTTON6, _("sin"), wxPoint(16,112), wxSize(75,32), 0, wxDefaultValidator, _T("ID_BUTTON6"));
     Button7 = new wxButton(this, ID_BUTTON7, _("."), wxPoint(16,272), wxSize(75,32), 0, wxDefaultValidator, _T("ID_BUTTON7"));
     Button8 = new wxButton(this, ID_BUTTON8, _("7"), wxPoint(16,232), wxSize(75,31), 0, wxDefaultValidator, _T("ID_BUTTON8"));
@@ -129,6 +133,8 @@ ScientificCalculatorFrame::ScientificCalculatorFrame(wxWindow* parent,wxWindowID
     Button27 = new wxButton(this, ID_BUTTON27, _("/"), wxPoint(264,152), wxSize(75,31), 0, wxDefaultValidator, _T("ID_BUTTON27"));
     Button28 = new wxButton(this, ID_BUTTON28, _("+"), wxPoint(264,272), wxSize(75,32), 0, wxDefaultValidator, _T("ID_BUTTON28"));
     Button29 = new wxButton(this, ID_BUTTON29, _("C"), wxPoint(184,40), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON29"));
+    Button30 = new wxButton(this, ID_BUTTON30, _("PI"), wxPoint(104,312), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON30"));
+    Button31 = new wxButton(this, ID_BUTTON31, _("e"), wxPoint(184,312), wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON31"));
     MenuBar1 = new wxMenuBar();
     Menu1 = new wxMenu();
     MenuItem1 = new wxMenuItem(Menu1, idMenuQuit, _("Quit\tAlt-F4"), _("Quit the application"), wxITEM_NORMAL);
@@ -174,6 +180,8 @@ ScientificCalculatorFrame::ScientificCalculatorFrame(wxWindow* parent,wxWindowID
     Connect(ID_BUTTON27,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnButton27Click);
     Connect(ID_BUTTON28,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnButton28Click);
     Connect(ID_BUTTON29,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnButton29Click);
+    Connect(ID_BUTTON30,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnButton30Click);
+    Connect(ID_BUTTON31,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnButton31Click);
     Connect(idMenuQuit,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnQuit);
     Connect(idMenuAbout,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&ScientificCalculatorFrame::OnAbout);
     Connect(wxID_ANY,wxEVT_CLOSE_WINDOW,(wxObjectEventFunction)&ScientificCalculatorFrame::OnClose);
@@ -391,10 +399,12 @@ void ScientificCalculatorFrame::OnButton5Click(wxCommandEvent& event)
 
 void ScientificCalculatorFrame::OnButton7Click(wxCommandEvent& event)
 {
+    append(".");
 }
 
 void ScientificCalculatorFrame::OnButton17Click(wxCommandEvent& event)
 {
+    append("0");
 }
 
 void ScientificCalculatorFrame::OnButton2Click(wxCommandEvent& event)
@@ -488,4 +498,22 @@ void ScientificCalculatorFrame::OnButton11Click(wxCommandEvent& event)
     std::string stringValue = std::string(TextCtrl1->GetValue());
     double doubleValue = atof(stringValue.c_str());
     calculate(5, doubleValue);
+}
+
+void ScientificCalculatorFrame::OnButton30Click(wxCommandEvent& event)
+{
+    std::ostringstream strs;
+    strs << M_PI;
+    std::string stringValue1 = strs.str();
+    wxString wxStringValue(stringValue1);
+    TextCtrl1->SetValue(wxStringValue);
+}
+
+void ScientificCalculatorFrame::OnButton31Click(wxCommandEvent& event)
+{
+    std::ostringstream strs;
+    strs << M_E;
+    std::string stringValue1 = strs.str();
+    wxString wxStringValue(stringValue1);
+    TextCtrl1->SetValue(wxStringValue);
 }

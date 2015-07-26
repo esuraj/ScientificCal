@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <wxsmith>
 	<object class="wxFrame" name="ScientificCalculatorFrame">
-		<size>366,331</size>
+		<size>366,377</size>
 		<id_arg>0</id_arg>
 		<handler function="OnClose" entry="EVT_CLOSE" />
 		<object class="wxTextCtrl" name="ID_TEXTCTRL1" variable="TextCtrl1" member="yes">
@@ -34,7 +34,7 @@
 			<handler function="OnButton4Click" entry="EVT_BUTTON" />
 		</object>
 		<object class="wxButton" name="ID_BUTTON5" variable="Button5" member="yes">
-			<label>√</label>
+			<label>SQRT</label>
 			<pos>16,72</pos>
 			<size>75,31</size>
 			<handler function="OnButton5Click" entry="EVT_BUTTON" />
@@ -180,6 +180,16 @@
 			<label>C</label>
 			<pos>184,40</pos>
 			<handler function="OnButton29Click" entry="EVT_BUTTON" />
+		</object>
+		<object class="wxButton" name="ID_BUTTON30" variable="Button30" member="yes">
+			<label>PI</label>
+			<pos>104,312</pos>
+			<handler function="OnButton30Click" entry="EVT_BUTTON" />
+		</object>
+		<object class="wxButton" name="ID_BUTTON31" variable="Button31" member="yes">
+			<label>e</label>
+			<pos>184,312</pos>
+			<handler function="OnButton31Click" entry="EVT_BUTTON" />
 		</object>
 		<object class="wxMenuBar" variable="MenuBar1" member="no">
 			<object class="wxMenu" variable="Menu1" member="no">

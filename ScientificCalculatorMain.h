@@ -59,6 +59,8 @@ class ScientificCalculatorFrame: public wxFrame
         void OnButton18Click(wxCommandEvent& event);
         void OnButton22Click(wxCommandEvent& event);
         void OnButton11Click(wxCommandEvent& event);
+        void OnButton30Click(wxCommandEvent& event);
+        void OnButton31Click(wxCommandEvent& event);
         //*)
 
         void calculate(int newOperator, double newValue);
@@ -97,6 +99,8 @@ class ScientificCalculatorFrame: public wxFrame
         static const long ID_BUTTON27;
         static const long ID_BUTTON28;
         static const long ID_BUTTON29;
+        static const long ID_BUTTON30;
+        static const long ID_BUTTON31;
         static const long idMenuQuit;
         static const long idMenuAbout;
         static const long ID_STATUSBAR1;
@@ -111,6 +115,7 @@ class ScientificCalculatorFrame: public wxFrame
         wxButton* Button22;
         wxButton* Button2;
         wxButton* Button23;
+        wxButton* Button30;
         wxButton* Button6;
         wxButton* Button10;
         wxButton* Button11;
@@ -122,6 +127,7 @@ class ScientificCalculatorFrame: public wxFrame
         wxStatusBar* StatusBar1;
         wxButton* Button19;
         wxButton* Button9;
+        wxButton* Button31;
         wxButton* Button21;
         wxTextCtrl* TextCtrl1;
         wxButton* Button17;
